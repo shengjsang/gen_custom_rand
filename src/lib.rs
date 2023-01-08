@@ -21,3 +21,12 @@ pub enum CharSetKind {
     LetterAndSymbol,
     NumberLetterAndSymbol,
 }
+
+impl Custom {
+    pub fn new(length: i32, charset: CharSet) -> Custom {
+        Custom {
+            length,
+            charset,
+        }
+    }
+}
