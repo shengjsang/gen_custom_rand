@@ -1,5 +1,8 @@
 /// Generate random number or string by custom
 
+use anyhow::Result;
+use rand::Rng;
+
 pub struct Custom {
     /// length of random number or string
     length: usize,
@@ -30,7 +33,7 @@ impl Custom {
         }
     }
 
-    pub fn generate(&self) -> Vec<u8> {
+    pub fn generate(&self) -> String {
         let mut charset: Vec<u8> = Vec::new();
         match self.charset.kind {
             CharSetKind::Number => {
@@ -63,6 +66,19 @@ impl Custom {
                             0123456789~!@#$%^&*()_+-={}[]|:;<>,.?/\"\\".to_vec();
             }
         }
-        charset
+
+        let mut rng = rand::thread_rng();
+
+        let value: String = (0..self.length)
+            .map(|_| {
+                let idx = rng.gen_range(0..charset.len());
+                CHARSET[idx] as char
+            })
+            .collect();
+
+        value
+
     }
+
+
 }
