@@ -80,8 +80,14 @@ mod tests {
     use crate::{CharSetKind, Custom};
 
     #[test]
-    fn it_works() {
+    fn number_and_letter() {
         let random = Custom::new(5, CharSetKind::NumberAndLetter).generate();
+        assert_eq!(random, "a".to_string())
+    }
+
+    #[test]
+    fn number() {
+        let random = Custom::new(5, CharSetKind::Number).generate();
         assert_eq!(random, "a".to_string())
     }
 }
