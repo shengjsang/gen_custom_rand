@@ -79,6 +79,20 @@ impl Custom {
 mod tests {
     use crate::{CharSetKind, Custom};
 
+
+
+    #[test]
+    fn number() {
+        let random = Custom::new(5, CharSetKind::Number).generate();
+        assert_eq!(random, "a".to_string())
+    }
+
+    #[test]
+    fn letter() {
+        let random = Custom::new(5, CharSetKind::Letter).generate();
+        assert_eq!(random, "a".to_string())
+    }
+
     #[test]
     fn number_and_letter() {
         let random = Custom::new(5, CharSetKind::NumberAndLetter).generate();
@@ -86,8 +100,10 @@ mod tests {
     }
 
     #[test]
-    fn number() {
-        let random = Custom::new(5, CharSetKind::Number).generate();
+    fn number_and_symbol() {
+        let random = Custom::new(5, CharSetKind::NumberAndSymbol).generate();
         assert_eq!(random, "a".to_string())
     }
+
+
 }
