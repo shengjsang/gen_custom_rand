@@ -115,5 +115,11 @@ mod tests {
         assert_eq!(random, "a".to_string())
     }
 
+    #[test]
+    fn number_and_letter_and_symbol() {
+        let random = Custom::new(10, CharSetKind::NumberLetterAndSymbol).generate();
+        assert_eq!(random, "a".to_string())
+    }
+
 
 }
