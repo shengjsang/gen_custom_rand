@@ -28,7 +28,6 @@ impl Custom {
     }
 
     pub fn generate(&self) -> String {
-
         let charset = match self.kind {
             CharSetKind::Number => {
                 b"0123456789".to_vec()
@@ -80,7 +79,6 @@ mod tests {
     use crate::{CharSetKind, Custom};
 
 
-
     #[test]
     fn number() {
         let random = Custom::new(5, CharSetKind::Number).generate();
@@ -108,6 +106,12 @@ mod tests {
     #[test]
     fn number_and_symbol() {
         let random = Custom::new(5, CharSetKind::NumberAndSymbol).generate();
+        assert_eq!(random, "a".to_string())
+    }
+
+    #[test]
+    fn letter_and_symbol() {
+        let random = Custom::new(5, CharSetKind::LetterAndSymbol).generate();
         assert_eq!(random, "a".to_string())
     }
 
